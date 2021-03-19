@@ -1,10 +1,12 @@
 const Discord = require('discord.js')
 const moment = require('moment')
 const config = require('../../config.json')
+const client = new Discord.Client()
  
 module.exports = {
     run: message => {
         const owneruser = message.guild.owner
+
         message.channel.send(new Discord.MessageEmbed()
             .addField('Propriétaire', `${owneruser}`)
             .addField('Région', message.guild.region)
@@ -17,10 +19,6 @@ module.exports = {
             .setThumbnail(message.guild.iconURL())
             .setImage(message.guild.bannerURL()))
 
-    // ---------- | LOGS EXECTIONS DE LA COMMANDES | ------------
-
-        message.guild.channels.cache.get(config.logs_commandes).send(new Discord.MessageEmbed()
-        .addField(`Commandes executer`, `> Nom de la commande: server-info\n> Utilisateur: ${message.author}\n> ID de l'utilisateur: ${message.author.id}`))
     },
     name: 'si'
 }

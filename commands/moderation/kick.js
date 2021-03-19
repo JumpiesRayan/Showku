@@ -15,10 +15,6 @@ module.exports = {
         message.channel.send((new Discord.MessageEmbed)
         .addField(`${member.user.tag} a été kick`, `Raison: ${reason}`))
 
-            // ---------- | LOGS EXECTIONS DE LA COMMANDES | ------------
-
-        message.guild.channels.cache.get(config.logs_commandes).send(new Discord.MessageEmbed()
-        .addField(`Commandes executer`, `> Nom de la commande: kick\n> Utilisateur: ${message.author}\n> ID de l'utilisateur: ${message.author.id}`))
     },
     name: 'kick'
 }

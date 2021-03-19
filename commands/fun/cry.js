@@ -10,10 +10,6 @@ module.exports = {
         .setImage(replies[Math.floor(Math.random() * replies.length)])
         .setColor('#f8f8f9'))
 
-        // ---------- | LOGS EXECTIONS DE LA COMMANDES | ------------
-
-        message.guild.channels.cache.get(config.logs_commandes).send(new Discord.MessageEmbed()
-            .addField(`Commandes executer`, `> Nom de la commande: cry\n> Utilisateur: ${message.author}\n> ID de l'utilisateur: ${message.author.id}`))
     },
     name: 'cry'
 }

@@ -1,4 +1,3 @@
-const config = require('../../config.json')
 const Discord = require('discord.js')
 
 module.exports = {
@@ -9,10 +8,6 @@ module.exports = {
             .setDescription(`Voici la photo de profil a **${member.user.username}**`)
             .setImage(avatar))
 
-    // ---------- | LOGS EXECTIONS DE LA COMMANDES | ------------
-
-        message.guild.channels.cache.get(config.logs_commandes).send(new Discord.MessageEmbed()
-        .addField(`Commandes executer`, `> Nom de la commande: avatar\n> Utilisateur: ${message.author}\n> ID de l'utilisateur: ${message.author.id}`))
     },
     name: 'avatar',
 }

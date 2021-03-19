@@ -15,12 +15,8 @@ module.exports = {
         await member.roles.remove(muteRole)
         message.delete()
         message.channel.send(new Discord.MessageEmbed()
-        .setTitle(`${member.tag} a été unmute`)) 
+        .setTitle(`${member.user.tag} a été unmute`)) 
 
-        // ---------- | LOGS EXECUTIONS DE LA COMMANDES | ------------
-
-        message.guild.channels.cache.get(config.logs_commandes).send(new Discord.MessageEmbed()
-        .addField(`Commandes executer`, `> Nom de la commande: unmute\n> Utilisateur: ${message.author.tag}\n> ID de l'utilisateur: ${message.author.id}`))
     },
     name: 'unmute'
 }

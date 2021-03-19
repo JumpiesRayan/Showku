@@ -5,6 +5,7 @@ const config = require('../../config.json')
 module.exports = {
     run: (message, args, client) => {
         const member = message.mentions.members.first() || message.member
+        
         message.channel.send(new Discord.MessageEmbed()
             .addField('Membre', member)
             .addField('Tag', member.user.tag)
@@ -13,10 +14,6 @@ module.exports = {
             .addField('Date d\'arrivée sur le serveur', moment(member.joinedAt).format('[Le] DD/MM/YYYY [à] HH:mm:ss'))
             .setThumbnail(member.user.displayAvatarURL()))
 
-    // ---------- | LOGS EXECTIONS DE LA COMMANDES | ------------
-
-        message.guild.channels.cache.get(config.logs_commandes).send(new Discord.MessageEmbed()
-        .addField(`Commandes executer`, `> Nom de la commande: user-info\n> Utilisateur: ${message.author}\n> ID de l'utilisateur: ${message.author.id}`))
     },
     name: 'ui'
 }

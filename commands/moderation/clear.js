@@ -10,10 +10,6 @@ module.exports = {
         const { size } = await message.channel.bulkDelete(Number(count) + 1, true)
         message.channel.send(`${size - 1} messages ont été supprimés !`).then(sent => sent.delete({timeout: 5e3}))
 
-        // ---------- | LOGS EXECTIONS DE LA COMMANDES | ------------
-
-        message.guild.channels.cache.get(config.logs_commandes).send(new Discord.MessageEmbed()
-            .addField(`Commandes executer`, `> Nom de la commande: clear\n> Utilisateur: ${message.author}\n> ID de l'utilisateur: ${message.author.id}`))
     },
     name: 'clear'
 }
