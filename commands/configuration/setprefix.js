@@ -5,8 +5,8 @@ const serveurConfigue = require('../../serveur.json')
 
 module.exports = { 
     run: async (message, args) => {
-        if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('Vous n\'avez pas la permission d\'utiliser cette commande.')
-        if (!args[0]) return message.channel.send('Veuillez indiquer le nouveau préfixe du bot.')
+        if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('Vous n\'avez pas la permission d\'utiliser cette commande.').then(sent => sent.delete({timeout: 5e3}))
+        if (!args[0]) return message.channel.send('Veuillez indiquer le nouveau préfixe du bot.').then(sent => sent.delete({timeout: 5e3}))
 
         serveurConfigue[message.guild.id] = {
             prefixe: args[0],
@@ -23,7 +23,7 @@ module.exports = {
             if (err) console.log(err)
         })
         message.delete()
-        message.channel.send(`Le préfixe à bien été changé pour ${args[0]}`)
+        message.channel.send(`Le préfixe à bien été changé pour ${args[0]}`).then(sent => sent.delete({timeout: 5e3}))
     },
     name: 'set-prefix'
 }

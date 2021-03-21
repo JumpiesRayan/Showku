@@ -4,9 +4,9 @@ const fs = require('fs')
 
 module.exports = {
     run: async (message, args) => {
-        if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('Vous n\'avez pas la permission d\'utiliser cette commande.')
+        if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('Vous n\'avez pas la permission d\'utiliser cette commande.').then(sent => sent.delete({timeout: 5e3}))
         const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
-        if (!channel) return message.channel.send('Veuillez indiquer l\'ID du channel pour les suggestions.')
+        if (!channel) return message.channel.send('Veuillez indiquer l\'ID du channel pour les suggestions.').then(sent => sent.delete({timeout: 5e3}))
 
         serveurConfigue[message.guild.id] = {
             prefixe: serveurConfigue[message.guild.id].prefixe,
@@ -22,7 +22,7 @@ module.exports = {
         fs.writeFile("./serveur.json", JSON.stringify(serveurConfigue), function (err) {
             if (err) console.log(err)
         })
-        message.channel.send(`Le salon de suggestions à bien été configuré dans le salon ${channel}`)
+        message.channel.send(`Le salon de suggestions à bien été configuré dans le salon ${channel}`).then(sent => sent.delete({timeout: 5e3}))
     },
     name: 'set-suggestion'
 }

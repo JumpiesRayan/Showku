@@ -6,6 +6,7 @@ module.exports = {
         let avatar = member.user.displayAvatarURL({size: 4096, dynamic: true})
         message.channel.send(new Discord.MessageEmbed()
             .setDescription(`Voici la photo de profil a **${member.user.username}**`)
+            .setColor('#f8f8f9')
             .setImage(avatar))
 
     },

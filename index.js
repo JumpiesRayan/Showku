@@ -61,7 +61,7 @@ client.on("message", async (message) => {
     
         if (now < expirationTime) {
             const timeLeft = (expirationTime - now) / 1000;
-            return message.channel.send(`${message.author.username}, merci de patienter ${timeLeft.toFixed(1)} secondes avant d'utiliser cette commande.`)
+            return message.channel.send(`${message.author.username}, merci de patienter ${timeLeft.toFixed(1)} secondes avant d'utiliser cette commande.`).then(sent => sent.delete({timeout: 5e3}))
         }
     }
     timestamps.set(message.author.id, now)

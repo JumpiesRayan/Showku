@@ -1,7 +1,7 @@
 {
-  "name": "yodabot",
+  "name": "showku",
   "version": "1.0.0",
-  "description": "YodaBot",
+  "description": "Showku",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

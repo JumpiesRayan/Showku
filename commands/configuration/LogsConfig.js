@@ -5,13 +5,13 @@ const serveurConfigue = require('../../serveur.json')
 module.exports = {
     run: async (message, args) => {
 
-        if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('Vous n\'avez pas la permission d\'utiliser cette commande.')
-        if (!args[0]) return message.channel.send('Veuillez indiquer les logs que vous voulez ajouter.')
+        if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('Vous n\'avez pas la permission d\'utiliser cette commande.').then(sent => sent.delete({timeout: 5e3}))
+        if (!args[0]) return message.channel.send('Veuillez indiquer les logs que vous voulez ajouter.').then(sent => sent.delete({timeout: 5e3}))
         const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
 
         // LOGS MESSAGE SUPPRIMER
         if (args[0] == 'deletemsg') {
-            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des messages supprimés.')
+            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des messages supprimés.').then(sent => sent.delete({timeout: 5e3}))
             serveurConfigue[message.guild.id] = {
                 prefixe: serveurConfigue[message.guild.id].prefixe,
                 LogsSanctions: serveurConfigue[message.guild.id].LogsSanctions,
@@ -27,12 +27,12 @@ module.exports = {
                 if (err) console.log(err)
             })
             message.delete()
-            message.channel.send(`Les logs des messages supprimés ont bien été configuré dans le salon ${channel}.`)
+            message.channel.send(`Les logs des messages supprimés ont bien été configuré dans le salon ${channel}.`).then(sent => sent.delete({timeout: 5e3}))
         }
 
         // LOGS MESSAGE MODIFIER
         if (args[0] == 'editmsg') {
-            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des messages modifiés.')
+            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des messages modifiés.').then(sent => sent.delete({timeout: 5e3}))
             serveurConfigue[message.guild.id] = {
                 prefixe: serveurConfigue[message.guild.id].prefixe,
                 LogsSanctions: serveurConfigue[message.guild.id].LogsSanctions,
@@ -48,12 +48,12 @@ module.exports = {
                 if (err) console.log(err)
             })
             message.delete()
-            message.channel.send(`Les logs des messages modifiés ont bien été configuré dams le salon ${channel}.`)
+            message.channel.send(`Les logs des messages modifiés ont bien été configuré dams le salon ${channel}.`).then(sent => sent.delete({timeout: 5e3}))
         }
 
         // LOGS SANCTIONS 
         if (args[0] == 'sanctions') {
-            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des sanctions.')
+            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des sanctions.').then(sent => sent.delete({timeout: 5e3}))
             serveurConfigue[message.guild.id] = {
                 prefixe: serveurConfigue[message.guild.id].prefixe,
                 LogsSanctions: channel.id,
@@ -69,11 +69,11 @@ module.exports = {
                 if (err) console.log(err)
             })
             message.delete()
-            message.channel.send(`Les logs des sanctions ont bien été configuré dans le salon ${channel}.`)
+            message.channel.send(`Les logs des sanctions ont bien été configuré dans le salon ${channel}.`).then(sent => sent.delete({timeout: 5e3}))
         }
         // LOGS ROLE CREATE
         if (args[0] == 'newrole') {
-            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des nouveaux rôles.')
+            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des nouveaux rôles.').then(sent => sent.delete({timeout: 5e3}))
             serveurConfigue[message.guild.id] = {
                 prefixe: serveurConfigue[message.guild.id].prefixe,
                 LogsSanctions: serveurConfigue[message.guild.id].LogsSanctions,
@@ -89,12 +89,12 @@ module.exports = {
                 if (err) console.log(err)
             })
             message.delete()
-            message.channel.send(`Les logs des nouveaux rôles ont bien été configuré dans le salon ${channel}.`)
+            message.channel.send(`Les logs des nouveaux rôles ont bien été configuré dans le salon ${channel}.`).then(sent => sent.delete({timeout: 5e3}))
         }
 
         // LOGS ROLE DELETE
         if (args[0] == 'deleterole') {
-            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des rôles supprimés.')
+            if (!channel) return message.channel.send('Veuillez indiquer l\'ID du salon pour les logs des rôles supprimés.').then(sent => sent.delete({timeout: 5e3}))
             serveurConfigue[message.guild.id] = {
                 prefixe: serveurConfigue[message.guild.id].prefixe,
                 LogsSanctions: serveurConfigue[message.guild.id].LogsSanctions,
@@ -110,7 +110,7 @@ module.exports = {
                 if (err) console.log(err)
             })
             message.delete()
-            message.channel.send(`Les logs des rôles supprimés ont bien été configuré dans le salon ${channel}.`)
+            message.channel.send(`Les logs des rôles supprimés ont bien été configuré dans le salon ${channel}.`).then(sent => sent.delete({timeout: 5e3}))
         }
     },
     name: 'set-logs'

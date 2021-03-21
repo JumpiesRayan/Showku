@@ -17,5 +17,6 @@ module.exports = {
         .setColor('#f8f8f9'))
 
     },
-    name: 'feed'
+    name: 'feed',
+    cooldown: 3
 }

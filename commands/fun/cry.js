@@ -11,5 +11,6 @@ module.exports = {
         .setColor('#f8f8f9'))
 
     },
-    name: 'cry'
+    name: 'cry',
+    cooldown: 3
 }

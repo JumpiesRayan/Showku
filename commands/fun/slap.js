@@ -17,5 +17,6 @@ module.exports = {
         .setColor('#f8f8f9'))
 
     },
-    name: 'slap'
+    name: 'slap',
+    cooldown: 3
 }
